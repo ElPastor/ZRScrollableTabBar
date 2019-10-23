@@ -25,6 +25,8 @@
 @property (nonatomic, strong) __strong UIScrollView *tabScrollView;
 
 @property (nonatomic, strong) UIColor* bgSelectedColor;
+@property (nonatomic, strong) UIColor* selectedImageTintColor;
+@property (nonatomic, strong) UIColor* tintColor;
 
 - (id)initWithItems:(NSArray *)items;
 - (void)setItems:(NSArray *)items animated:(BOOL)animated;
