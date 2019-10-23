@@ -24,6 +24,8 @@
 @property (nonatomic, retain) UIButton *previousButton;
 @property (nonatomic, strong) __strong UIScrollView *tabScrollView;
 
+@property (nonatomic, strong) UIColor* bgSelectedColor;
+
 - (id)initWithItems:(NSArray *)items;
 - (void)setItems:(NSArray *)items animated:(BOOL)animated;
 - (int)currentTabBarTag;

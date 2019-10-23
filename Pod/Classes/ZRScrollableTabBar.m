@@ -199,12 +199,39 @@
     for (UITabBar *tabBar in self.tabBars)
         if (tabBar != cTabBar)
             tabBar.selectedItem = nil;
+ 
+    [self setSelected: item in: cTabBar];
     
     [self.scrollableTabBarDelegate scrollableTabBar:self didSelectItemWithTag:(int)item.tag];
 }
 
+- (void) setSelected: (UITabBarItem*) item in: (UITabBar*) tabBar
+{
+    [self clearSelection];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        for (NSInteger i = 0; i < tabBar.items.count; i++) {
+            UITabBarItem * ii = tabBar.items[i];
+            if (item == ii) {
+                UIView* sv = tabBar.subviews[i+1];
+                sv.backgroundColor = self.bgSelectedColor;
+            }
+        }
+    });
+}
+
+- (void) clearSelection
+{
+    for (UITabBar *tabBar in tabBars) {
+        for (UIView* view in tabBar.subviews) {
+            view.backgroundColor = self.backgroundColor;
+        }
+    }
+}
 
 - (void)dealloc {
 }
 
+@end
+
+@interface UITabBarController()
 @end
