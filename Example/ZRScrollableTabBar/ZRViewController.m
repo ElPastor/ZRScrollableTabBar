@@ -26,6 +26,8 @@
 {
     // Tab bar
     UITabBarItem *item1 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:1];
+    item1.selectedImage = [item1.image imageWithRenderingMode: UIImageRenderingModeAlwaysTemplate];
+    item1.image = [item1.image imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
     UITabBarItem *item2 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemContacts tag:2];
     UITabBarItem *item3 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemDownloads tag:3];
     UITabBarItem *item4 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:4];

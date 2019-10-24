@@ -27,6 +27,7 @@
 @property (nonatomic, strong) UIColor* bgSelectedColor;
 @property (nonatomic, strong) UIColor* selectedImageTintColor;
 @property (nonatomic, strong) UIColor* tintColor;
+@property (nonatomic, strong) UIColor* selectedTintColor;
 
 - (id)initWithItems:(NSArray *)items;
 - (void)setItems:(NSArray *)items animated:(BOOL)animated;

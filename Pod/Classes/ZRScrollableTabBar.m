@@ -244,6 +244,14 @@
     }
 }
 
+- (void) setSelectedTintColor:(UIColor *)selectedTintColor
+{
+    _selectedTintColor = selectedTintColor;
+    for (UITabBar *tabBar in tabBars) {
+        tabBar.selectedImageTintColor = selectedTintColor;
+    }
+}
+
 - (void)dealloc {
 }
 
