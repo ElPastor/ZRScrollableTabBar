@@ -37,15 +37,15 @@
         tabScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(10.0, 0.0, TabWidth, TabHeight)];
         previousButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [previousButton setFrame:CGRectMake(2, 14, 10, 21)];
+        [previousButton setBackgroundColor: UIColor.clearColor];
         nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [nextButton setFrame:CGRectMake(TabWidth + 8, 14, 10, 21)];
+        [nextButton setBackgroundColor: UIColor.clearColor];
         [nextButton addTarget:self action:@selector(goToNextTabBar) forControlEvents:UIControlEventTouchUpInside];
         [previousButton addTarget:self action:@selector(goToPreviousTabBar) forControlEvents:UIControlEventTouchUpInside];
         [previousButton setImage:nil forState:UIControlStateNormal];
-        [nextButton setImage:[UIImage imageNamed:@"arrrow_right.png"] forState:UIControlStateNormal];
-        [self setBackgroundColor:[UIColor colorWithRed:246.0/255 green:246.0/255 blue:246.0/255 alpha:1.0]];
-        [nextButton setBackgroundColor:[UIColor colorWithRed:246.0/255 green:246.0/255 blue:246.0/255 alpha:1.0]];
-        [previousButton setBackgroundColor:[UIColor colorWithRed:246.0/255 green:246.0/255 blue:246.0/255 alpha:1.0]];
+        [nextButton setImage:nil forState:UIControlStateNormal];
+
         [self addSubview:nextButton];
         [self addSubview:previousButton];
         tabScrollView.pagingEnabled = YES;
@@ -61,6 +61,8 @@
         {
             UITabBar *tabBar = [[UITabBar alloc] initWithFrame:CGRectMake(x, 0.0, TabWidth, TabHeight)];
             tabBar.delegate = self;
+            tabBar.backgroundImage = [UIImage new];
+            tabBar.shadowImage = [UIImage new];
             int len = 0;
             
             for (int i = d * ButtonNoPerTab; i < d * ButtonNoPerTab + ButtonNoPerTab; i ++)
@@ -80,7 +82,8 @@
         [self.tabScrollView setContentSize:CGSizeMake(x, TabHeight)];
         
     }
-    
+    [self updateControlButtons];
+
     return self;
 }
 
@@ -156,7 +159,7 @@
     return NO;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+- (void) updateControlButtons
 {
     CGFloat pageWidth = tabScrollView.frame.size.width;
     double maxPage = ceil(tabScrollView.contentSize.width / screenWidth) - 1;
@@ -176,6 +179,11 @@
         [previousButton setImage:[UIImage imageNamed:@"arrrow_left.png"] forState:UIControlStateNormal];
         [nextButton setImage:[UIImage imageNamed:@"arrrow_right.png"] forState:UIControlStateNormal];
     }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self updateControlButtons];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
@@ -225,14 +233,6 @@
         for (UIView* view in tabBar.subviews) {
             view.backgroundColor = self.backgroundColor;
         }
-    }
-}
-
-- (void) setSelectedImageTintColor:(UIColor *)selectedImageTintColor
-{
-    _selectedImageTintColor = selectedImageTintColor;
-    for (UITabBar *tabBar in tabBars) {
-        tabBar.selectedImageTintColor = selectedImageTintColor;
     }
 }
 
