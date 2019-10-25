@@ -42,6 +42,7 @@
     tabBar.backgroundColor = [UIColor colorWithRed:0.10 green:0.56 blue:0.89 alpha:1.0];//[UIColor colorWithCSS: @"1A8FE3"];
     tabBar.bgSelectedColor = [UIColor colorWithRed:0.29 green:0.67 blue:0.95 alpha:1.0];//[UIColor colorWithCSS: @"49ABF1"];
     tabBar.tintColor = [UIColor whiteColor];
+    tabBar.unselectedItemTintColor = [UIColor redColor];
     
     
     [self.view addSubview:tabBar];

@@ -25,7 +25,7 @@
 @property (nonatomic, strong) __strong UIScrollView *tabScrollView;
 
 @property (nonatomic, strong) UIColor* bgSelectedColor;
-@property (nonatomic, strong) UIColor* selectedImageTintColor;
+@property (nonatomic, strong) UIColor* unselectedItemTintColor;
 @property (nonatomic, strong) UIColor* tintColor;
 @property (nonatomic, strong) UIColor* selectedTintColor;
 

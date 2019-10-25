@@ -244,11 +244,11 @@
     }
 }
 
-- (void) setSelectedTintColor:(UIColor *)selectedTintColor
+- (void) setUnselectedItemTintColor:(UIColor *)unselectedItemTintColor
 {
-    _selectedTintColor = selectedTintColor;
+    _unselectedItemTintColor = unselectedItemTintColor;
     for (UITabBar *tabBar in tabBars) {
-        tabBar.selectedImageTintColor = selectedTintColor;
+        tabBar.unselectedItemTintColor = unselectedItemTintColor;
     }
 }
 
