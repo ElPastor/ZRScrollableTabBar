@@ -159,6 +159,17 @@
     return NO;
 }
 
+- (UITabBarItem*) itemWithTag: (int) tag
+{
+    for (UITabBar *tabBar in self.tabBars)
+        for (UITabBarItem *item in tabBar.items)
+            if (item.tag == tag) {
+                return item;
+            }
+    
+    return nil;
+}
+
 - (void) updateControlButtons
 {
     CGFloat pageWidth = tabScrollView.frame.size.width;

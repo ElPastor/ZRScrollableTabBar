@@ -36,6 +36,8 @@
 - (BOOL)scrollToTabBarWithTag:(int)tag animated:(BOOL)animated;
 - (BOOL)selectItemWithTag:(int)tag;
 
+- (UITabBarItem*) itemWithTag: (int) tag;
+
 -(void)goToNextTabBar;
 -(void)goToPreviousTabBar;
 
