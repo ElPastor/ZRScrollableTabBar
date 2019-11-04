@@ -185,17 +185,17 @@
     if (page == 0)
     {
         [previousButton setImage:nil forState:UIControlStateNormal];
-        [nextButton setImage:[UIImage imageNamed:@"arrrow_right.png"] forState:UIControlStateNormal];
+        [nextButton setImage:self.nextButtonImage?:[UIImage imageNamed:@"arrrow_right.png"] forState:UIControlStateNormal];
     }
     else if (page == maxPage)
     {
-        [previousButton setImage:[UIImage imageNamed:@"arrrow_left.png"] forState:UIControlStateNormal];
+        [previousButton setImage:self.previousButtonImage?:[UIImage imageNamed:@"arrrow_left.png"] forState:UIControlStateNormal];
         [nextButton setImage:nil forState:UIControlStateNormal];
     }
     else
     {
-        [previousButton setImage:[UIImage imageNamed:@"arrrow_left.png"] forState:UIControlStateNormal];
-        [nextButton setImage:[UIImage imageNamed:@"arrrow_right.png"] forState:UIControlStateNormal];
+        [previousButton setImage:self.previousButtonImage?:[UIImage imageNamed:@"arrrow_left.png"] forState:UIControlStateNormal];
+        [nextButton setImage:self.nextButtonImage?:[UIImage imageNamed:@"arrrow_right.png"] forState:UIControlStateNormal];
     }
 }
 

@@ -29,6 +29,9 @@
 @property (nonatomic, strong) UIColor* tintColor;
 @property (nonatomic, strong) UIColor* selectedTintColor;
 
+@property (nonatomic, strong) UIImage* nextButtonImage;
+@property (nonatomic, strong) UIImage* previousButtonImage;
+
 - (id)initWithItems:(NSArray *)items;
 - (id)initWithItems:(NSArray *)items maxPerTab: (NSInteger) perTab;
 - (void)setItems:(NSArray *)items animated:(BOOL)animated;
