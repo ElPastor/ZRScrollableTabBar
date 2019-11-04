@@ -18,7 +18,7 @@
     CGFloat screenHeight;
 }
 
-@property (nonatomic, assign) NSInteger maxPerBar;
+@property (nonatomic, assign) CGFloat maxPerBar;
 
 @end
 
