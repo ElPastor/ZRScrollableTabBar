@@ -30,6 +30,7 @@
 @property (nonatomic, strong) UIColor* selectedTintColor;
 
 - (id)initWithItems:(NSArray *)items;
+- (id)initWithItems:(NSArray *)items maxPerTab: (NSInteger) perTab;
 - (void)setItems:(NSArray *)items animated:(BOOL)animated;
 - (int)currentTabBarTag;
 - (int)selectedItemTag;

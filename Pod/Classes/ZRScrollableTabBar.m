@@ -18,6 +18,8 @@
     CGFloat screenHeight;
 }
 
+@property (nonatomic, assign) NSInteger maxPerBar;
+
 @end
 
 @implementation ZRScrollableTabBar
@@ -29,12 +31,17 @@
 @synthesize tabScrollView;
 
 - (id)initWithItems:(NSArray *)items {
+    return [self initWithItems: items maxPerTab: ButtonNoPerTab];
+}
+
+- (id)initWithItems:(NSArray *)items maxPerTab: (NSInteger) perTab {
     screenWidth = [[UIScreen mainScreen] bounds].size.width;
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     self = [super initWithFrame:CGRectMake(0.0, screenHeight-TabHeight, screenWidth, TabHeight)];
     if (self)
     {
         tabScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(10.0, 0.0, TabWidth, TabHeight)];
+        self.maxPerBar = perTab;
         previousButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [previousButton setFrame:CGRectMake(2, 14, 10, 21)];
         [previousButton setBackgroundColor: UIColor.clearColor];
@@ -57,7 +64,7 @@
         
         float x = 0.0;
         
-        for (double d = 0; d < ceil(items.count / ButtonNoPerTab); d ++)
+        for (double d = 0; d < ceil(items.count / self.maxPerBar); d ++)
         {
             UITabBar *tabBar = [[UITabBar alloc] initWithFrame:CGRectMake(x, 0.0, TabWidth, TabHeight)];
             tabBar.delegate = self;
@@ -65,11 +72,11 @@
             tabBar.shadowImage = [UIImage new];
             int len = 0;
             
-            for (int i = d * ButtonNoPerTab; i < d * ButtonNoPerTab + ButtonNoPerTab; i ++)
+            for (int i = d * self.maxPerBar; i < d * self.maxPerBar + self.maxPerBar; i ++)
                 if (i < items.count)
                     len ++;
             
-            tabBar.items = [items objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(d * ButtonNoPerTab, len)]];
+            tabBar.items = [items objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(d * self.maxPerBar, len)]];
             
             [self.tabScrollView addSubview:tabBar];
             
@@ -105,14 +112,14 @@
     for (UITabBar *tabBar in self.tabBars) {
         int len = 0;
         
-        for (int i = [self.tabBars indexOfObject:tabBar] * ButtonNoPerTab; i < [self.tabBars indexOfObject:tabBar] * ButtonNoPerTab + ButtonNoPerTab; i ++)
+        for (int i = [self.tabBars indexOfObject:tabBar] * self.maxPerBar; i < [self.tabBars indexOfObject:tabBar] * self.maxPerBar + self.maxPerBar; i ++)
             if (i < items.count)
                 len ++;
         
-        [tabBar setItems:[items objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange([self.tabBars indexOfObject:tabBar] * ButtonNoPerTab, len)]] animated:animated];
+        [tabBar setItems:[items objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange([self.tabBars indexOfObject:tabBar] * self.maxPerBar, len)]] animated:animated];
     }
     
-    tabScrollView.contentSize = CGSizeMake(ceil(items.count / ButtonNoPerTab) * screenWidth, TabHeight);
+    tabScrollView.contentSize = CGSizeMake(ceil(items.count / self.maxPerBar) * screenWidth, TabHeight);
 }
 
 - (int)currentTabBarTag {
