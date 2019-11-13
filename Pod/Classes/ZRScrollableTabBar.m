@@ -182,7 +182,7 @@
     CGFloat pageWidth = tabScrollView.frame.size.width;
     double maxPage = ceil(tabScrollView.contentSize.width / screenWidth) - 1;
     int page = floor((tabScrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-    if (self.tabBars.count == 0)
+    if (self.tabBars.count == 1)
     {
         [previousButton setImage:nil forState:UIControlStateNormal];
         [nextButton setImage: nil forState:UIControlStateNormal];
