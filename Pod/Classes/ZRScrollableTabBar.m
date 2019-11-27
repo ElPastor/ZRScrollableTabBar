@@ -35,6 +35,10 @@
 }
 
 - (id)initWithItems:(NSArray *)items maxPerTab: (NSInteger) perTab {
+    return [self initWithItems: items maxPerTab: ButtonNoPerTab defaultTag: 0];
+}
+
+- (id)initWithItems:(NSArray *)items maxPerTab: (NSInteger) perTab defaultTag: (NSInteger) tag {
     screenWidth = [[UIScreen mainScreen] bounds].size.width;
     screenHeight = [[UIScreen mainScreen] bounds].size.height;
     self = [super initWithFrame:CGRectMake(0.0, screenHeight-TabHeight, screenWidth, TabHeight)];
@@ -85,9 +89,10 @@
             
             x += TabWidth;
         }
-        [self selectItemWithTag:(int)[(UITabBarItem *)[items firstObject] tag]];
+        [self selectItemWithTag: (int)tag];
         [self.tabScrollView setContentSize:CGSizeMake(x, TabHeight)];
-        
+        [self scrollToTabBarWithTag: (int)tag animated: NO];
+
     }
     [self updateControlButtons];
 

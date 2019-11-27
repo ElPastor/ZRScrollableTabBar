@@ -34,6 +34,7 @@
 
 - (id)initWithItems:(NSArray *)items;
 - (id)initWithItems:(NSArray *)items maxPerTab: (NSInteger) perTab;
+- (id)initWithItems:(NSArray *)items maxPerTab: (NSInteger) perTab defaultTag: (NSInteger) tag;
 - (void)setItems:(NSArray *)items animated:(BOOL)animated;
 - (int)currentTabBarTag;
 - (int)selectedItemTag;
