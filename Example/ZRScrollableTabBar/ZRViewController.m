@@ -36,8 +36,11 @@
     UITabBarItem *item7 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:7];
     UITabBarItem *item8 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemContacts tag:8];
     UITabBarItem *item9 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:9];
-    
-    ZRScrollableTabBar *tabBar = [[ZRScrollableTabBar alloc] initWithItems:[NSArray arrayWithObjects: item1, item2, item3, item4, item5, item6, nil] maxPerTab: 3 defaultTag: 3];
+    UITabBarItem *item10 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:10];
+    UITabBarItem *item11 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:11];
+    UITabBarItem *item12 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:12];
+
+    ZRScrollableTabBar *tabBar = [[ZRScrollableTabBar alloc] initWithItems:[NSArray arrayWithObjects: item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12, nil] maxPerTab: 3 defaultTag: 3];
     tabBar.scrollableTabBarDelegate = self;
     tabBar.backgroundColor = [UIColor colorWithRed:0.10 green:0.56 blue:0.89 alpha:1.0];//[UIColor colorWithCSS: @"1A8FE3"];
     tabBar.bgSelectedColor = [UIColor colorWithRed:0.29 green:0.67 blue:0.95 alpha:1.0];//[UIColor colorWithCSS: @"49ABF1"];

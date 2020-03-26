@@ -10,7 +10,8 @@
 
 #define ButtonNoPerTab 5.0
 #define TabHeight 49.0
-#define TabWidth [[UIScreen mainScreen] bounds].size.width-20
+#define ControlButtonWidth 32.0
+#define TabWidth [[UIScreen mainScreen] bounds].size.width-ControlButtonWidth*2
 
 @interface ZRScrollableTabBar ()
 {
@@ -44,13 +45,13 @@
     self = [super initWithFrame:CGRectMake(0.0, screenHeight-TabHeight, screenWidth, TabHeight)];
     if (self)
     {
-        tabScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(10.0, 0.0, TabWidth, TabHeight)];
+        tabScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(ControlButtonWidth, 0.0, TabWidth, TabHeight)];
         self.maxPerBar = perTab;
         previousButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [previousButton setFrame:CGRectMake(2, 14, 10, 21)];
+        [previousButton setFrame:CGRectMake(2, 14, ControlButtonWidth, 21)];
         [previousButton setBackgroundColor: UIColor.clearColor];
         nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [nextButton setFrame:CGRectMake(TabWidth + 8, 14, 10, 21)];
+        [nextButton setFrame:CGRectMake(TabWidth + ControlButtonWidth, 14, ControlButtonWidth, 21)];
         [nextButton setBackgroundColor: UIColor.clearColor];
         [nextButton addTarget:self action:@selector(goToNextTabBar) forControlEvents:UIControlEventTouchUpInside];
         [previousButton addTarget:self action:@selector(goToPreviousTabBar) forControlEvents:UIControlEventTouchUpInside];
