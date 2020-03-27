@@ -109,6 +109,12 @@
         frame.origin.y -= offset;
         frame.size.height += offset;
         self.frame = frame;
+
+        for (UITabBar *tabBar in self.tabBars) {
+            CGRect frame = tabBar.frame;
+            frame.size.height = self.tabScrollView.frame.size.height;
+            tabBar.frame = frame;
+        }
     }
 }
 
