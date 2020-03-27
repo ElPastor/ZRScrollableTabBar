@@ -100,6 +100,18 @@
     return self;
 }
 
+- (void) didMoveToWindow {
+    [super didMoveToWindow];
+    
+    if (@available(iOS 11.0, *)) {
+        CGFloat offset = UIApplication.sharedApplication.windows.firstObject.safeAreaInsets.bottom;
+        CGRect frame = self.frame;
+        frame.origin.y -= offset;
+        frame.size.height += offset;
+        self.frame = frame;
+    }
+}
+
 -(void)goToNextTabBar
 {
     CGFloat pageWidth = self.frame.size.width;
