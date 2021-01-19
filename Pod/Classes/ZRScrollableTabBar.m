@@ -253,6 +253,10 @@
     [self scrollViewDidEndDecelerating:scrollView];
 }
 
+- (void)tabBar:(UITabBar *)cTabBar didSelectItem:(UITabBarItem *)item {
+    [self tabBar:cTabBar didSelectItem:item force: NO];
+}
+
 - (void)tabBar:(UITabBar *)cTabBar didSelectItem:(UITabBarItem *)item force: (BOOL) force {
     if (!force && [self.scrollableTabBarDelegate respondsToSelector: @selector(scrollableTabBar:shouldSelectItemWithTag:)]) {
         if (![self.scrollableTabBarDelegate scrollableTabBar: self shouldSelectItemWithTag: (int)item.tag]) {
