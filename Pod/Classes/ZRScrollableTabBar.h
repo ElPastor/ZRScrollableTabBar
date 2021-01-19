@@ -40,6 +40,7 @@
 - (int)selectedItemTag;
 - (BOOL)scrollToTabBarWithTag:(int)tag animated:(BOOL)animated;
 - (BOOL)selectItemWithTag:(int)tag;
+- (BOOL)selectItemWithTag:(int)tag force: (BOOL) force;
 - (void) updateControlButtons;
 
 - (UITabBarItem*) itemWithTag: (int) tag;

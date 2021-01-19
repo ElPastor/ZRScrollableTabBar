@@ -167,7 +167,7 @@
                 tabBar.selectedItem = item;
                 
                 [tabScrollView scrollRectToVisible:tabBar.frame animated:animated];
-                [self tabBar:tabBar didSelectItem:item];
+                [self tabBar:tabBar didSelectItem:item force: NO];
                 
                 return YES;
             }
@@ -177,12 +177,16 @@
 }
 
 - (BOOL)selectItemWithTag:(int)tag {
+    return [self selectItemWithTag: tag force: NO];
+}
+
+- (BOOL)selectItemWithTag:(int)tag force: (BOOL) force {
     for (UITabBar *tabBar in self.tabBars)
         for (UITabBarItem *item in tabBar.items)
             if (item.tag == tag) {
                 tabBar.selectedItem = item;
                 
-                [self tabBar:tabBar didSelectItem:item];
+                [self tabBar:tabBar didSelectItem:item force: force];
                 
                 return YES;
             }
@@ -249,8 +253,8 @@
     [self scrollViewDidEndDecelerating:scrollView];
 }
 
-- (void)tabBar:(UITabBar *)cTabBar didSelectItem:(UITabBarItem *)item {
-    if ([self.scrollableTabBarDelegate respondsToSelector: @selector(scrollableTabBar:shouldSelectItemWithTag:)]) {
+- (void)tabBar:(UITabBar *)cTabBar didSelectItem:(UITabBarItem *)item force: (BOOL) force {
+    if (!force && [self.scrollableTabBarDelegate respondsToSelector: @selector(scrollableTabBar:shouldSelectItemWithTag:)]) {
         if (![self.scrollableTabBarDelegate scrollableTabBar: self shouldSelectItemWithTag: (int)item.tag]) {
             return;
         }
