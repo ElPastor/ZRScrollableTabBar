@@ -47,6 +47,7 @@
 -(void)goToNextTabBar;
 -(void)goToPreviousTabBar;
 
+- (void) setSelected: (UITabBarItem*) item in: (UITabBar*) tabBar;
 
 @end
 
