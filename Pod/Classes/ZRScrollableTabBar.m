@@ -250,6 +250,11 @@
 }
 
 - (void)tabBar:(UITabBar *)cTabBar didSelectItem:(UITabBarItem *)item {
+    if ([self.scrollableTabBarDelegate respondsToSelector: @selector(scrollableTabBar:shouldSelectItemWithTag:)]) {
+        if (![self.scrollableTabBarDelegate scrollableTabBar: self shouldSelectItemWithTag: (int)item.tag]) {
+            return;
+        }
+    }
     // Act like a single tab bar
     for (UITabBar *tabBar in self.tabBars)
         if (tabBar != cTabBar)

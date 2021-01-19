@@ -51,5 +51,6 @@
 @end
 
 @protocol ZRScrollableTabBarDelegate <NSObject>
+- (BOOL)scrollableTabBar:(ZRScrollableTabBar *)tabBar shouldSelectItemWithTag:(int)tag;
 - (void)scrollableTabBar:(ZRScrollableTabBar *)tabBar didSelectItemWithTag:(int)tag;
 @end
