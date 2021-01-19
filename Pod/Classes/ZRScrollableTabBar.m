@@ -279,6 +279,22 @@
     });
 }
 
+- (void) setSelected: (UITabBarItem*) item
+{
+    [self clearSelection];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        for (UITabBar *tabBar in tabBars) {
+            for (NSInteger i = 0; i < tabBar.items.count; i++) {
+                UITabBarItem * ii = tabBar.items[i];
+                if (item == ii) {
+                    UIView* sv = tabBar.subviews[i+1];
+                    sv.backgroundColor = self.bgSelectedColor;
+                }
+            }
+        }
+    });
+}
+
 - (void) clearSelection
 {
     for (UITabBar *tabBar in tabBars) {
